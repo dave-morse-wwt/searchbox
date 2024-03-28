@@ -1,0 +1,1 @@
+export const SearchBox = () => <div>text input will go here ...</div>

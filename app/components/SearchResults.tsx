@@ -1,0 +1,1 @@
+export const SearchResults = () => <div>search results will go here...</div>
