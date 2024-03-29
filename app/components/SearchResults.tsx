@@ -1,1 +1,1 @@
-export const SearchResults = () => <div>search results will go here...</div>
+export const SearchResults = (results: any) => <div>search results will go here...{JSON.stringify(results)}</div>
