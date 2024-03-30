@@ -1,10 +1,10 @@
+import { Product, Ratings } from "../types/businessTypes";
 import { NetFetching, NetError, netError, netFetching } from "../types/webApiTypeSym";
 
-export const SearchResultsRated = ({results} : {results: Record<string,number> | NetFetching | NetError}) => 
-  (<ul>{results === netError ? "ERROR" : 
-        results === netFetching ? "..." : 
-        // JSON.stringify(Object.entries(results).map(entry => entry))
-        Object.entries(results).map(([name, stars]) => <li key={name}>{name} {"⭐️".repeat(stars)}</li>)
-        // <li>foo</li>
-        }
-   </ul>)
+export const SearchResultsRated = ({results, ratings} : {results: Product[] | NetFetching | NetError, ratings: Ratings | NetFetching | NetError}) => {
+    return (<ul>{results === netError || ratings === netError ? "ERROR" : 
+                    results === netFetching || ratings === netFetching ? "..." : 
+                    results.map(({id, name}) => <li key={id}>{name} {"⭐️".repeat(ratings[id])}</li>)
+                    }
+            </ul>);
+}
