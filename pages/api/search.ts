@@ -1,8 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-const search = (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("search endpoint hit")
-  res.status(200).json({ text: 'Hello from Search' });
+
+const search = async (req: NextApiRequest, res: NextApiResponse) => {
+  const q = req.query?.q;
+  await sleep(700);
+  res.status(200).json(q ? [`${q} classic`, `diet ${q}`, `mecha${q}`, 'beans'] : []);
 }
-  
+
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 export default search;

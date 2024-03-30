@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { pokemonApi } from './services/searchApi'
+import { searchApi } from './services/searchApi'
 import { setupListeners } from '@reduxjs/toolkit/query'
 // ...
 
 export const store = configureStore({
   reducer: {
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+    [searchApi.reducerPath]: searchApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware),
+    getDefaultMiddleware().concat(searchApi.middleware),
 })
 
 setupListeners(store.dispatch) // reason is in https://redux-toolkit.js.org/tutorials/rtk-query
