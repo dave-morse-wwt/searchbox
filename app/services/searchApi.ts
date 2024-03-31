@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Id, Product, Ratings } from "../types/businessTypes";
+import { Id, Product } from "../types/businessTypes";
 
 export const searchApi = createApi({
     reducerPath: 'searchApi',
@@ -13,7 +13,7 @@ export const searchApi = createApi({
           return `search?${queryParams.toString()}`},
       }),
 
-      rating: builder.query<Ratings, Id[]>({
+      rating: builder.query<Record<Id,number>, Id[]>({
         query: (ids) => {
           const queryParams = new URLSearchParams();
           ids.forEach(id => queryParams.append("id", id));
