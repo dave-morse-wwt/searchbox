@@ -16,6 +16,6 @@ const findRatings = (keys: Id[]): Record<Id, number>  =>
   Object.fromEntries(keys.map(k => [k, randomFiveStarRating()]))
 
 const randomFiveStarRating = () =>
-  Math.floor(5 * Math.random() + 1);
+  Math.floor(4 * Math.random() + 1);
 
 export default rating;

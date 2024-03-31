@@ -6,12 +6,12 @@ export const SearchResultsRated = ({searchResults, stars} :
                                    }) => {
     return (<ul>{searchResults && stars
                  ? searchResults.map(({id, name}) => {
-                     const rating = stars[id];
-                     if (!rating)
-                       throw new Error(`Could not find some of ${JSON.stringify(searchResults)} in ${JSON.stringify(stars)}`);
-                     return <li key={id}>{name} {"⭐️".repeat(rating)}</li>
+                     const starCount = stars[id];
+                     if (starCount === undefined)
+                       throw new Error(`Could not find ${id} in ${JSON.stringify(stars)}`);
+                     return <li key={id}>{name} {"⭐️".repeat(starCount)}</li>
                    })
-                 : "..."
+                 : [1,2,3,4].map(n => <li key={n}>...</li>)
                 }
             </ul>);
 }
