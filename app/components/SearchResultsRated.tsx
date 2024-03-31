@@ -1,3 +1,5 @@
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { Id, Product } from "../types/businessTypes";
 
 export const SearchResultsRated = ({searchResults, stars} : 
@@ -19,5 +21,5 @@ export const SearchResultsRated = ({searchResults, stars} :
 export const SearchResults = ({searchResults} : {searchResults: Product[] | undefined}) => 
   (<ul>{searchResults 
         ? searchResults.map(({id, name}) => <li key={id}>{name}</li>) 
-        : [1,2,3,4].map(n => <li key={n}>...</li>)}
+        : [1,2,3,4].map(n => <li key={n}><Skeleton /></li>)}
    </ul>)
